@@ -4,9 +4,9 @@
 
 java planning.testeconomy $1 $2
 echo  execute and time   the harmony algorithm
-echo "time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv > /tmp/harmony.txt"
+echo "time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv > harmony.txt"
 
-time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv > /tmp/harmony.txt
+time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv > harmony.txt
  
 echo Harmony achieved 
 tail --lines=2 /tmp/harmony.txt

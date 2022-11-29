@@ -1,6 +1,7 @@
-all:   planning/nyearplan.class plan.txt test.txt result.csv
+all:   planning/nyearplan.class harmony.txt plan.txt example_model.lp
+	lp_solve < example_model.lp | sort | sed "/Actual/d"
 
-test.txt: planning/nyearplan.class planning/testeconomy.class testrun.sh
+plan.txt: planning/nyearplan.class planning/testeconomy.class testrun.sh
 	bash testrun.sh 4 2
 
 harmony.txt: planning/nyearplan.class planning/testeconomy.class testharmony.sh planning/nyearHarmony.class testharmony.sh Makefile
@@ -8,29 +9,26 @@ harmony.txt: planning/nyearplan.class planning/testeconomy.class testharmony.sh 
 
 pasharm/harmonyplan:  pasharm/harmonyplan.pas pasharm/csvfilereader.pas pasharm/technologies.pas pasharm/harmony.pas
 	$(MAKE) -C pasharm
-	
 
 planning/csvfilereader.class: planning/csvfilereader.java planning/pcsv.java
 	javac planning/csvfilereader.java
-	
+
 clean:
 	rm planning/*.class  
 	rm plan.txt
 	rm /tmp/model.lp
 	rm /tmp/harmony.txt
-	
+	rm example_model.lp
+
 planning/nyearplan.class:planning/nyearplan.java planning/csvfilereader.class
-		javac planning/nyearplan.java
-		
-plan.txt: model.lp
-	lp_solve <model.lp|sort >plan.txt
-	
-model.lp:planning/nyearplan.class flows.csv cap.csv dep.csv labtarg.csv Makefile
-	java planning.nyearplan flows.csv cap.csv dep.csv labtarg.csv   >model.lp
-	
+	javac planning/nyearplan.java
+
+example_model.lp:planning/nyearplan.class ../toy/flows.csv ../toy/cap.csv ../toy/dep.csv ../toy/labtarg.csv Makefile
+	java planning.nyearplan ../toy/flows.csv ../toy/cap.csv ../toy/dep.csv ../toy/labtarg.csv > example_model.lp
+
 hplan.txt:  planning/nyearplan.class  planning/nyearHarmony.class    Makefile
-	java planning.nyearHarmony flows.csv cap.csv dep.csv labtarg.csv   >hplan.txt
-	
+	java planning.nyearHarmony ../toy/flows.csv ../toy/cap.csv ../toy/dep.csv ../toy/labtarg.csv > hplan.txt
+
 planning/testeconomy.class:planning/testeconomy.java
 	javac planning/testeconomy.java
 
