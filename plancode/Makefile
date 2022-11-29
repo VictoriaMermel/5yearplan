@@ -18,11 +18,11 @@ planning/csvfilereader.class: planning/csvfilereader.java planning/pcsv.java
 	javac planning/csvfilereader.java
 
 clean:
-	rm planning/*.class  
-	rm plan.txt
-	rm /tmp/model.lp
-	rm harmony.txt
-	rm example_model.lp
+	@rm planning/*.class 2> /dev/null ||:
+	@rm plan.txt 2> /dev/null ||:
+	@rm /tmp/model.lp 2> /dev/null ||:
+	@rm harmony.txt 2> /dev/null ||:
+	@rm example_model.lp 2> /dev/null ||:
 
 planning/nyearplan.class:planning/nyearplan.java planning/csvfilereader.class
 	javac planning/nyearplan.java
