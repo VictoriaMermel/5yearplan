@@ -4,6 +4,8 @@
 Software to construct socialist 5 year or N year plan using input output tables and linear programming
 For initial documentation see the documentation file in the plancode directory
 
+Written by Paul Cockshott, some scripts modified by Victoria Mermel
+
 ** Instructions
 1. Ensure that the following packages are install on your linux system:
 
