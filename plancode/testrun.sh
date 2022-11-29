@@ -1,4 +1,7 @@
- 
+#/bin/sh
+
+# Written by Paul Cockshott, modified by Victoria Mermel
+
 java planning.testeconomy $1 $2
  
 java planning.nyearplan testflow.csv testcap.csv testdep.csv testtarg.csv > /tmp/model.lp
