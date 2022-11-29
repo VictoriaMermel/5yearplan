@@ -3,21 +3,22 @@
  echo  execute and time   the harmony algorithm 
 echo "time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv    >harmony.txt"
 
-time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv    >harmony.txt
+time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv > /tmp/harmony.txt
  
 echo Harmony achieved 
- tail --lines=2 harmony.txt
+ tail --lines=2 /tmp/harmony.txt
  echo   prepare the linear programme and print time taken
  
-time  java planning.nyearplan testflow.csv testcap.csv testdep.csv testtarg.csv   >test.lp
+time  java planning.nyearplan testflow.csv testcap.csv testdep.csv testtarg.csv > /tmp/model.lp
  
 echo statistics of the linear programme specification
 echo lines, words, chars
-wc test.lp  
+wc /tmp/model.lp  
 echo execute and time  the linear programme
 echo "time lp_solve <test.lp|sort >test.txt "
-time lp_solve <test.lp|sort >test.txt 
+time lp_solve < /tmp/model.lp | sort | sed "/Actual/d" > plan.txt
  
 echo Degree of plan fulfillment using linear programme
-tail --lines=2 test.txt 
+tail --lines=2 plan.txt 
 
+rm testcap.csv testdep.csv testflow.csv testtarg.csv

@@ -16,7 +16,8 @@ planning/csvfilereader.class: planning/csvfilereader.java planning/pcsv.java
 clean:
 	rm planning/*.class  
 	rm plan.txt
-	rm model.lp
+	rm /tmp/model.lp
+	rm /tmp/harmony.txt
 	
 planning/nyearplan.class:planning/nyearplan.java planning/csvfilereader.class
 		javac planning/nyearplan.java
