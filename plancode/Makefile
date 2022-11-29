@@ -1,6 +1,8 @@
 # Written by Paul Cockshott, modified by Victoria Mermel
 
-all:   planning/nyearplan.class harmony.txt plan.txt example_model.lp
+all:     planning/nyearplan.class planning/testeconomy.class planning/nyearHarmony.class
+
+tests:   planning/nyearplan.class harmony.txt plan.txt example_model.lp
 	lp_solve < example_model.lp | sort | sed "/Actual/d"
 
 plan.txt: planning/nyearplan.class planning/testeconomy.class testrun.sh
