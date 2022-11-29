@@ -1,14 +1,16 @@
 #+title: 5yearplan
 #+author: Paul Cockshott (modified by Victoria Mermel)
 
-* 5yearplan
 Software to construct socialist 5 year or N year plan using input output tables and linear programming
 For initial documentation see the documentation file in the plancode directory
 
 ** Instructions
 1. Ensure that the following packages are install on your linux system:
+
    a) Java Development System / JDK
+
    b) GNU make
+
    c) lpsolve
 2. Run the following commands:
     #+BEGIN_SRC shell
