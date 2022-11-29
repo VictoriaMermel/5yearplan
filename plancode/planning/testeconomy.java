@@ -3,7 +3,8 @@ import java.io.*;
 import java.util.*;
 /** this generates test economies of varying sizes for testing
   *  the planning software
-  *  Usage : java planing.testeconomy <number of sectors> */
+  *  Usage : java planing.testeconomy <number of sectors>
+  * Written by Paul Cockshott, modified by Victoria Mermel */
 class testeconomy {
 
     static int sectors=1;
@@ -23,8 +24,8 @@ class testeconomy {
         if(args.length!= 2) {
             System.err.println("Usage : java planing.testeconomy <number of sectors> <years>");
         }
-        sectors = new Integer(args[0]).intValue();
-        int years=new Integer(args[1]).intValue();
+        sectors = Integer.parseInt(args[0]);
+        int years= Integer.parseInt(args[1]);
         netuse=new float[sectors];
         heads=headings(sectors);
 
