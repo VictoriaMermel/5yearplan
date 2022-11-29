@@ -9,7 +9,7 @@ echo "time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep
 time java -Xmx1512m planning.nyearHarmony testflow.csv testcap.csv testdep.csv testtarg.csv > harmony.txt
  
 echo Harmony achieved 
-tail --lines=2 /tmp/harmony.txt
+tail --lines=2 harmony.txt
 echo   prepare the linear programme and print time taken
  
 time  java planning.nyearplan testflow.csv testcap.csv testdep.csv testtarg.csv > /tmp/model.lp

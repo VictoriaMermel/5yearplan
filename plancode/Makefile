@@ -17,7 +17,7 @@ clean:
 	rm planning/*.class  
 	rm plan.txt
 	rm /tmp/model.lp
-	rm /tmp/harmony.txt
+	rm harmony.txt
 	rm example_model.lp
 
 planning/nyearplan.class:planning/nyearplan.java planning/csvfilereader.class
