@@ -16,12 +16,11 @@ time  java planning.nyearplan testflow.csv testcap.csv testdep.csv testtarg.csv 
  
 echo statistics of the linear programme specification
 echo lines, words, chars
-wc /tmp/model.lp  
+wc /tmp/model.lp
+rm testcap.csv testdep.csv testflow.csv testtarg.csv
 echo execute and time  the linear programme
 echo 'time lp_solve < /tmp/model.lp | sort | sed "/Actual/d/" > plan.txt'
 time lp_solve < /tmp/model.lp | sort | sed "/Actual/d" > plan.txt
  
 echo Degree of plan fulfillment using linear programme
 tail --lines=2 plan.txt 
-
-rm testcap.csv testdep.csv testflow.csv testtarg.csv
